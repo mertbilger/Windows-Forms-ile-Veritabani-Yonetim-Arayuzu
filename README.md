@@ -35,3 +35,14 @@ Oluşturmuş olduğumuz bu metodu Form ilk açıldığında çalıştırmak içi
             MusteriGetir();
         }
 ```
+# Form Tasarım ve Düzenleme
+Kullanacağınız veritabanının içinde bulunan bilgilerden hangilerinin görünmesini ve düzenlenmesini istiyorsanız onları kullanabilirsiniz.
+
+![](https://i.hizliresim.com/57mf0jm.png)
+
+Benim kullanacağım bilgiler bunlar. Ayrıca DataGridView 'de görevler kısmından eklemeyi,düzenlemeyi,silmeyi etkinleştir kısmındaki tikleri kaldırmalıyız. Çünkü tablo üzerinde herhangi bir değişiklik yapmıyacağız. (Buton özellikleri dışında)
+
+Şimdi DataGridView 'deki bilgilerin ilgili alanlara gelmesi için her bir TextBox 'a (Name) atamalarını yapıyoruz.
+![](https://i.hizliresim.com/ow2335l.png)
+
+DataGridView 'de bir satırı seçtiğimizde satırın tamamını işaretlemesi içinde özelliklerden "SelectionMode" kısmını FullRowSelect olarak değiştiriyoruz.
