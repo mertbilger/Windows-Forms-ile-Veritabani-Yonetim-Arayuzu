@@ -1,0 +1,10 @@
+C:\Users\Mert\source\repos\Görsel Veritabanı Yonetimi\Görsel Veritabanı Yonetimi\obj\Debug\Görsel Veritabanı Yonetimi.csproj.AssemblyReference.cache
+C:\Users\Mert\source\repos\Görsel Veritabanı Yonetimi\Görsel Veritabanı Yonetimi\obj\Debug\Görsel_Veritabanı_Yonetimi.Properties.Resources.resources
+C:\Users\Mert\source\repos\Görsel Veritabanı Yonetimi\Görsel Veritabanı Yonetimi\obj\Debug\Görsel Veritabanı Yonetimi.csproj.GenerateResource.cache
+C:\Users\Mert\source\repos\Görsel Veritabanı Yonetimi\Görsel Veritabanı Yonetimi\obj\Debug\Görsel Veritabanı Yonetimi.csproj.CoreCompileInputs.cache
+C:\Users\Mert\source\repos\Görsel Veritabanı Yonetimi\Görsel Veritabanı Yonetimi\bin\Debug\Görsel Veritabanı Yonetimi.exe.config
+C:\Users\Mert\source\repos\Görsel Veritabanı Yonetimi\Görsel Veritabanı Yonetimi\bin\Debug\Görsel Veritabanı Yonetimi.exe
+C:\Users\Mert\source\repos\Görsel Veritabanı Yonetimi\Görsel Veritabanı Yonetimi\bin\Debug\Görsel Veritabanı Yonetimi.pdb
+C:\Users\Mert\source\repos\Görsel Veritabanı Yonetimi\Görsel Veritabanı Yonetimi\obj\Debug\Görsel_Veritabanı_Yonetimi.Form1.resources
+C:\Users\Mert\source\repos\Görsel Veritabanı Yonetimi\Görsel Veritabanı Yonetimi\obj\Debug\Görsel Veritabanı Yonetimi.exe
+C:\Users\Mert\source\repos\Görsel Veritabanı Yonetimi\Görsel Veritabanı Yonetimi\obj\Debug\Görsel Veritabanı Yonetimi.pdb
