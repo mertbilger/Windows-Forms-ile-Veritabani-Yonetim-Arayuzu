@@ -9,6 +9,13 @@ Bu program, kullanıcı dostu bir arayüze sahiptir ve kolay kullanımı sayesin
 Bu yazılım, işletmeler, öğrenciler, araştırmacılar, geliştiriciler ve diğer veritabanı yönetimi ile ilgilenen herkes için faydalı olacaktır. Ayrıca veritabanı yönetimi işlemlerini daha kolay ve verimli bir şekilde gerçekleştirebilirsiniz.
 
 # Proje Yapım Aşaması
+Kodlarımıza geçmeden önce;
+Sql server bağlantısı için;
+
+```bash
+using System.Data.SqlClient;
+```
+eklememiz gerektiğini hatırlatalım.
 
 Öncelikle SqlConnection, SqlDataAdapter ve SqlCommand nesnelerimizi tekrar tekrar tanımlamamak için Public olarak tanımlıyoruz.
 ![](https://i.hizliresim.com/b8frrxw.png)
