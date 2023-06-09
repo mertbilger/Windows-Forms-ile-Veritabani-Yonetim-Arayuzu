@@ -42,7 +42,7 @@ Oluşturmuş olduğumuz bu metodu Form ilk açıldığında çalıştırmak içi
             MusteriGetir();
         }
 ```
-# Form Tasarım ve Düzenleme
+## Form Tasarım ve Düzenleme
 Kullanacağınız veritabanının içinde bulunan bilgilerden hangilerinin görünmesini ve düzenlenmesini istiyorsanız onları kullanabilirsiniz.
 
 ![](https://i.hizliresim.com/57mf0jm.png)
@@ -52,4 +52,82 @@ Benim kullanacağım bilgiler bunlar. Ayrıca DataGridView 'de görevler kısmı
 Şimdi DataGridView 'deki bilgilerin ilgili alanlara gelmesi için her bir TextBox 'a (Name) atamalarını yapıyoruz.
 ![](https://i.hizliresim.com/ow2335l.png)
 
-DataGridView 'de bir satırı seçtiğimizde satırın tamamını işaretlemesi içinde özelliklerden "SelectionMode" kısmını FullRowSelect olarak değiştiriyoruz.
+Örneğin ben Müsteri Id kısmındaki TextBox 'ın Name 'ini txtId şeklinde yaptım. Butonlar dahil olmak üzere hepsini değiştiriyoruz.
+
+DataGridView 'de bir satırı seçtiğimizde satırın tamamını işaretlemesi içinde özelliklerden " _SelectionMode_ "kısmını FullRowSelect olarak değiştiriyoruz.
+
+İlgili alanlara bilgilerin gelmesi için CellEnter olayını yapmamız lazım. Öncelikle DataGridView özelliklerinden Events kısmından CellEnter 'e çift tıklamamız gerekli.
+![](https://i.hizliresim.com/bwdxqat.png)
+
+Oluşan **dataGridView1_CellEnter** fonksiyonunu aşağıdaki gibi düzenliyoruz. Burada yaptığımız işlem DataGridView kontrolündeki seçilen satırın belirli hücrelerinin değerlerini TextBox kontrolüne atayarak, kullanıcıya bu verileri düzenleme veya görüntüleme imkanı sağlıyor.
+
+![](https://i.hizliresim.com/b4t8lr0.png)
+
+## Buton İşlemleri
+### Ekleme İşlemi
+Öncelikle ekle butonumuza çift tıklayarak fonksiyonu oluşturuyoruz.
+Aşağıdaki kod kullanıcının girdiği müşteri bilgilerini alarak, bu bilgileri bir SQL INSERT sorgusuyla veritabanına ekler. Ardından veritabanındaki müşteri verilerini güncellemek için **MusteriGetir** fonksiyonunu çağırır.
+```bash
+    private void button1_Click(object sender, EventArgs e)
+        {
+            string sorgu = "INSERT INTO musteri(Ad,Soyad,Sehir,Ulke,Telefon) VALUES (@Ad,@Soyad,@Sehir,@Ulke,@Telefon)";
+            komut = new SqlCommand(sorgu, baglanti);
+            komut.Parameters.AddWithValue("@Ad", txtAd.Text);
+            komut.Parameters.AddWithValue("@Soyad", txtSoyad.Text);
+            komut.Parameters.AddWithValue("@Sehir", txtSehir.Text);
+            komut.Parameters.AddWithValue("@Ulke", txtUlke.Text);
+            komut.Parameters.AddWithValue("@Telefon", txtTelefon.Text);
+            baglanti.Open();
+            komut.ExecuteNonQuery();
+            baglanti.Close();
+            MusteriGetir();
+        }
+```
+
+### Silme İşlemi
+
+Sil butonuna çift tıklayarak fonksiyonumuzu oluşturuyoruz. Burada "Id" değerini kullanarak veritabanından bir müşteri kaydını siliyoruz. İlgili "Id" değeri, "txtId" TextBox kontrolünden alınıyor. Daha sonra, müşteri verilerini güncellemek için **MusteriGetir** fonksiyonunu çağrıyoruz.
+```
+  private void btnSil_Click(object sender, EventArgs e)
+        {
+            string sorgu = "DELETE FROM musteri where Id=@Id";
+            komut = new SqlCommand(sorgu, baglanti);
+            komut.Parameters.AddWithValue("@Id", Convert.ToInt32(txtId.Text));
+            baglanti.Open();
+            komut.ExecuteNonQuery();
+            baglanti.Close();
+            MusteriGetir();
+
+        }
+```
+- **komut.Parameters.AddWithValue("@Ad", txtAd.Text);:** SqlCommand nesnesine, "@Ad" parametresiyle "txtAd" TextBox kontrolündeki metni eklemek için AddWithValue metodu kullanılıyor. Diğer TextBox kontrollerindeki metinler de benzer şekilde ilgili parametrelerle eşleştiriliyor.
+
+
+### Güncelleme İşlemi
+Güncelle butonuna çift tıklayarak fonksiyonumuzu oluşturuyoruz. Burada kullanıcının girdiği müşteri bilgilerini alarak, belirli bir "Id" değerine sahip müşteri kaydını güncellemek için bir SQL UPDATE sorgusu kullanıyoruz. Daha sonra veritabanındaki müşteri verilerini güncellemek için **MusteriGetir** fonksiyonunu çağrıyoruz.
+
+- **string sorgu = "UPDATE musteri SET Ad=@Ad,Soyad=@Soyad,Sehir=@Sehir,Ulke=@Ulke,Telefon=@Telefon WHERE Id=@Id";:** SQL sorgusunu tanımlayan bir dize oluşturuluyor. Bu sorgu, "musteri" adlı tablodaki bir müşteri kaydının "Id" sütununda belirtilen değeri kullanarak "Ad", "Soyad", "Sehir", "Ulke" ve "Telefon" sütunlarını güncellemek için kullanılıyor. Güncellenecek kaydın "Id" değeri, daha sonra parametre aracılığıyla sağlanacak.
+- **komut = new SqlCommand(sorgu, baglanti);:** SqlCommand sınıfından yeni bir nesne oluşturuluyor. Oluşturulan SqlCommand nesnesi, sorguyu ve bağlantıyı temsil ediyor.
+- **komut.Parameters.AddWithValue("@Id", Convert.ToInt32(txtId.Text));:** SqlCommand nesnesine, "@Id" parametresiyle "txtId" TextBox kontrolündeki metni, Integer türüne dönüştürerek eklemek için AddWithValue metodu kullanılıyor. Bu, güncellenecek müşterinin "Id" değerini temsil ediyor.
+- **komut.Parameters.AddWithValue("@Ad", txtAd.Text );:** SqlCommand nesnesine, "@Ad" parametresiyle "txtAd" TextBox kontrolündeki metni eklemek için AddWithValue metodu kullanılıyor. Diğer TextBox kontrollerindeki metinler de benzer şekilde ilgili parametrelerle eşleştiriliyor.
+- **baglanti.Open();:** Veritabanı bağlantısı açılıyor.
+- **komut.ExecuteNonQuery();:** SqlCommand nesnesi kullanılarak SQL sorgusu veritabanında çalıştırılıyor. UPDATE sorgusu, belirtilen "Id" değerine sahip müşteri kaydının "Ad", "Soyad", "Sehir", "Ulke" ve "Telefon" sütunlarını günceller.
+- **baglanti.Close();:** Veritabanı bağlantısı kapatılıyor.
+- **MusteriGetir();:**
+```
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            string sorgu = "UPDATE musteri SET Ad=@Ad,Soyad=@Soyad,Sehir=@Sehir,Ulke=@Ulke,Telefon=@Telefon WHERE Id=@Id";
+            komut = new SqlCommand(sorgu, baglanti);
+            komut.Parameters.AddWithValue("@Id", Convert.ToInt32(txtId.Text));
+            komut.Parameters.AddWithValue("@Ad", txtAd.Text );
+            komut.Parameters.AddWithValue("@Soyad",txtSoyad.Text );
+            komut.Parameters.AddWithValue("@Sehir",txtSehir.Text );
+            komut.Parameters.AddWithValue("@Ulke", txtUlke.Text);
+            komut.Parameters.AddWithValue("@Telefon", txtTelefon.Text);
+            baglanti.Open();
+            komut.ExecuteNonQuery();
+            baglanti.Close();
+            MusteriGetir();
+        }
+````
