@@ -63,6 +63,9 @@ Oluşan **dataGridView1_CellEnter** fonksiyonunu aşağıdaki gibi düzenliyoruz
 
 ![](https://i.hizliresim.com/b4t8lr0.png)
 
+![veriler](https://github.com/mertbilger/Windows-Forms-ile-Veritabani-Yonetim-Arayuzu/assets/93099933/60750318-9ec5-4faa-b0b1-91a265310c01)
+
+
 ## Buton İşlemleri
 ### Ekleme İşlemi
 Öncelikle ekle butonumuza çift tıklayarak fonksiyonu oluşturuyoruz.
@@ -84,6 +87,9 @@ Aşağıdaki kod kullanıcının girdiği müşteri bilgilerini alarak, bu bilgi
         }
 ```
 
+![ekle](https://github.com/mertbilger/Windows-Forms-ile-Veritabani-Yonetim-Arayuzu/assets/93099933/4085f657-49c8-4e01-b869-3f72a2860e52)
+
+
 ### Silme İşlemi
 
 Sil butonuna çift tıklayarak fonksiyonumuzu oluşturuyoruz. Burada "Id" değerini kullanarak veritabanından bir müşteri kaydını siliyoruz. İlgili "Id" değeri, "txtId" TextBox kontrolünden alınıyor. Daha sonra, müşteri verilerini güncellemek için **MusteriGetir** fonksiyonunu çağrıyoruz.
@@ -101,6 +107,8 @@ Sil butonuna çift tıklayarak fonksiyonumuzu oluşturuyoruz. Burada "Id" değer
         }
 ```
 - **komut.Parameters.AddWithValue("@Ad", txtAd.Text);:** SqlCommand nesnesine, "@Ad" parametresiyle "txtAd" TextBox kontrolündeki metni eklemek için AddWithValue metodu kullanılıyor. Diğer TextBox kontrollerindeki metinler de benzer şekilde ilgili parametrelerle eşleştiriliyor.
+
+![sil](https://github.com/mertbilger/Windows-Forms-ile-Veritabani-Yonetim-Arayuzu/assets/93099933/198a4e44-e3db-4c1a-a321-2077eecdb1cb)
 
 
 ### Güncelleme İşlemi
@@ -131,3 +139,6 @@ Güncelle butonuna çift tıklayarak fonksiyonumuzu oluşturuyoruz. Burada kulla
             MusteriGetir();
         }
 ````
+
+![güncelle](https://github.com/mertbilger/Windows-Forms-ile-Veritabani-Yonetim-Arayuzu/assets/93099933/aca272b3-c83e-4a09-902c-8b78313db09d)
+
